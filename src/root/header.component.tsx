@@ -1,22 +1,21 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import {Navbar, Nav, NavItem} from 'react-bootstrap';
-import {withRouter, Link} from 'react-router-dom';
-import {connect} from 'react-redux';
+import * as React from 'react';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { History } from 'history';
 
-class Header extends Component {
+interface HeaderProps {
+  history: History;
+}
 
-  static propTypes = {
-    history: PropTypes.object.isRequired,
-  };
+class Header extends React.Component<HeaderProps, {}> {
 
   render() {
 
-    let {history} = this.props;
+    let { history } = this.props;
 
     return (
       <div>
-        <Navbar inverse>
+        <Navbar inverse={true}>
           <Navbar.Header>
             <Navbar.Brand>
               <Link to="/">People search</Link>
@@ -34,4 +33,4 @@ class Header extends Component {
   }
 }
 
-export default withRouter(connect()(Header));
+export default Header;
